@@ -21,6 +21,18 @@ return {
 			ensure_installed = { "pyright" },
 			handlers = {
 				lsp_zero.default_setup,
+				pyright = function()
+					require("lspconfig").pyright.setup({
+						settings = {
+							python = {
+								analysis = {
+									autoSearchPaths = true,
+									useLibraryCodeForTypes = true,
+								},
+							},
+						},
+					})
+				end,
 			},
 		})
 	end,
